@@ -1,0 +1,23 @@
+{
+  "language": "语言",
+  "theme": "主题",
+  "editPassword": "修改密码",
+  "editUserInfo": "编辑用户信息",
+  "privacyPolicy": "隐私条款",
+  "signOut": "退出登录",
+  "appSettings": "应用设置",
+  "themeSettings": "主题设置",
+  "languageSettings": "语言设置",
+  "aboutUs": "关于我们",
+  "versionInformation": "版本信息",
+  "officialEmail": "官方邮箱",
+  "serviceHotline": "服务热线",
+  "officialWebsite": "官方网站",
+  "frequentlyAskedAuestions": "常见问题",
+  "userInformation": "用户信息",
+  "user": "用户",
+  "contact": "联系方式",
+  "email": "邮箱",
+  "department": "部门",
+  "Post": "岗位"
+}
