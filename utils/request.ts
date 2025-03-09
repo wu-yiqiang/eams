@@ -2,7 +2,7 @@ import { Request } from '@/types/request'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 export const request = async (req: Request) => {
   // const baseURL = 'http://192.168.110.180:8000'
-  const baseURL = 'https://sutter9527.top/msapp'
+  const baseURL = 'https://sutter9527.top/eams'
   let { url, method = 'GET', params = null, data = null, headers = {} } = req
   let uri = baseURL + url
   const token = await AsyncStorage.getItem('msAppToken')
