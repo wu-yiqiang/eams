@@ -9,10 +9,10 @@ import { Link, Stack, router, Tabs } from 'expo-router'
 export default function Setting() {
   const handleResetPassword = () => {}
   const handleTheme = () => {
-    // router.navigate({ pathname: '/users/theme' })
+    router.navigate({ pathname: '/users/theme' })
   }
   const handleLanguage = () => {
-    // router.navigate({ pathname: '/users/language' })
+    router.navigate({ pathname: '/users/language' })
   }
   const handleLoginOut = async () => {
     // await AsyncStorage.removeItem('msAppToken')
