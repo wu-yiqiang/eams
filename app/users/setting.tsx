@@ -2,9 +2,9 @@ import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-// import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Link, Stack, router, Tabs } from 'expo-router'
-// import i18n  from '@/local'
+
 
 export default function Setting() {
   const handleResetPassword = () => {}
@@ -15,7 +15,7 @@ export default function Setting() {
     router.navigate({ pathname: '/users/language' })
   }
   const handleLoginOut = async () => {
-    // await AsyncStorage.removeItem('msAppToken')
+    await AsyncStorage.removeItem('msAppToken')
     router.navigate({ pathname: '/login' })
   }
   return (
@@ -30,7 +30,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <AntDesign name="user" size={18} color="#0096fa" />
-              {/* <Text style={styles.texts}>{i18n.t('editUserInfo')}</Text> */}
+              <Text style={styles.texts}>{'编辑用户信息'}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
@@ -39,7 +39,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <AntDesign name="lock" size={18} color="#0096fa" />
-              {/* <Text style={styles.texts}>{i18n.t('editPassword')}</Text> */}
+              <Text style={styles.texts}>{'修改密码'}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
@@ -48,7 +48,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <Ionicons name="color-palette-outline" size={18} color="#0096fa" />
-              <Text style={styles.texts}>{i18n.t('theme')}</Text>
+              <Text style={styles.texts}>{'主题设置'}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
@@ -57,7 +57,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <MaterialIcons name="language" size={18} color="#0096fa" />
-              {/* <Text style={styles.texts}>{i18n.t('language')}</Text> */}
+              <Text style={styles.texts}>{'语言设置'}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>

@@ -1,10 +1,9 @@
-import { View, Text, StyleSheet, Image, TextInput, SafeAreaView } from 'react-native'
-// import AsyncStorage from '@react-native-async-storage/async-storage'
+import { View, Text, StyleSheet, Image, TextInput, SafeAreaView, Button } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Logo from '@/assets/images/logo.png'
 import { Link, router, Stack } from 'expo-router'
 import { PostLogin } from '@/api/public'
 import { useState } from 'react'
-// import { Toast, Cell, Button } from '@nutui/nutui-react-native'
 export default function Login() {
   const [formState, setFormState] = useState({ username: 'python222', password: '123456' })
   const [loading, setLoading] = useState(false)
@@ -15,7 +14,7 @@ export default function Login() {
     })
     const token = data?.token
     if (token) {
-      // await AsyncStorage.setItem('msAppToken', token)
+      await AsyncStorage.setItem('msAppToken', token)
       router.navigate({ pathname: '/' })
     }
   }
@@ -38,12 +37,8 @@ export default function Login() {
           <TextInput style={styles.input} inlineImageLeft="search_icon" value={formState.password} placeholder="密码" secureTextEntry={true} onChangeText={(value) => setFormState({ username: formState.username, password: value })} />
         </View>
         <View style={styles.toolBox}>
-          {/* <Button shape="square" type="primary" onPress={handleRegister}>
-            注册
-          </Button>
-          <Button shape="square" loading={loading} color="#7232dd" type="primary" onPress={handleLogin}>
-            登陆
-          </Button> */}
+          <Button title="注册" onPress={handleRegister} />
+          <Button title="登陆" onPress={handleLogin} />
         </View>
       </View>
     </View>

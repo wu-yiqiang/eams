@@ -16,19 +16,19 @@ import { Link, router, Tabs } from "expo-router";
 import avator from "@/assets/images/user.jpeg";
 export default function Index() {
   const handleUserinfo = () => {
-    // router.navigate({ pathname: "/users/profile" });
+    router.navigate({ pathname: "/users/profile" });
   };
   const handlePrivacy = () => {
-    // router.navigate({pathname: "/users/privacy" });
+    router.navigate({pathname: "/users/privacy" });
   };
   const handleSetting = () => {
-    // router.navigate({ pathname: '/users/setting' })
+    router.navigate({ pathname: '/users/setting' })
   }
   const handleAbout = () => {
-    // router.navigate({ pathname: '/users/about' })
+    router.navigate({ pathname: '/users/about' })
   }
   const handleQuestion = () => {
-    // router.navigate({ pathname: '/users/question' })
+    router.navigate({ pathname: '/users/question' })
   }
   return (
     <View style={styles.User}>
