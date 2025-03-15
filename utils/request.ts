@@ -4,7 +4,7 @@ import { EventEmitter } from 'events'
 import { Link, Stack, router, Tabs } from 'expo-router'
 import { Snackbar } from 'react-native-paper'
 export const request = async (req: Request) => {
-  //const baseURL = 'http://192.168.110.219:8000'
+  // const baseURL = 'http://192.168.110.219:8000'
   const baseURL = 'https://sutter9527.top/eams'
   let { url, method = 'GET', params = null, data = null, headers = {} } = req
   let uri = baseURL + url
@@ -23,13 +23,13 @@ export const request = async (req: Request) => {
       .reduce((t, v) => `${t}${v[0]}=${encodeURIComponent(v[1])}&`, Object.keys(params).length ? '?' : '')
       .replace(/&$/, '')
   return fetch(uri, options)
-    .then((response) => {
+    .then(async (response) => {
       if (!response.ok) {
         const status = response?.status
         if (status == 401) router.navigate({ pathname: '/login' })
         return Promise.reject()
       }
-      return response.json()
+      return await response.json()
     })
     .catch((error) => {
       console.log('服务端发生错误或者网络错误', error)

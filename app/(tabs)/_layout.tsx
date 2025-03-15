@@ -1,4 +1,4 @@
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons'
 import AntDesign from '@expo/vector-icons/AntDesign'
@@ -80,13 +80,4 @@ export default function TabLayout() {
   return <BottomNavigation navigationState={{ index, routes }} onIndexChange={setIndex} renderScene={renderScene} />
 }
 
-const styles = StyleSheet.create({
-  HomeToolBar: {
-    paddingRight: 10,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    columnGap: 10
-  }
-})
+const styles = StyleSheet.create({})

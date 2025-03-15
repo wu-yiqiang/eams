@@ -12,10 +12,10 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const handleLogin = async () => {
     setLoading(true)
-    const { data } = await PostLogin(formState).finally(() => {
+    const {data} = await PostLogin(formState).finally(() => {
       setLoading(false)
     })
-    const token = data?.token
+    const token = data?.token ?? ''
     if (token) {
       await AsyncStorage.setItem('msAppToken', token)
       setVisible(true)

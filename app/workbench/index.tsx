@@ -1,36 +1,52 @@
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import EvilIcons from '@expo/vector-icons/EvilIcons'
-import FontAwesome from '@expo/vector-icons/FontAwesome'
-import AntDesign from '@expo/vector-icons/AntDesign'
-import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import Feather from '@expo/vector-icons/Feather'
 import { Link, router, Tabs } from 'expo-router'
-import avator from '@/assets/images/user.jpeg'
+import { Appbar, Icon,Snackbar } from 'react-native-paper'
+import { useState } from 'react'
 export default function Workbench() {
+  const [visible, setVisible] = useState(false)
   const handleUserinfo = () => {
     router.navigate({ pathname: '/users/profile' })
+  }
+  const handleTip = () => {
+     setVisible(true)
+  }
+  const closeTips = () => {
+    setVisible(false)
   }
 
   return (
     <View style={styles.Workbench}>
+      <Appbar.Header mode="small" elevated>
+        <Appbar.Content title="工作台" />
+      </Appbar.Header>
+      <Snackbar visible={visible} onDismiss={closeTips} duration={2000}>
+        该功能正在加紧开发中，请耐心等待。。。
+      </Snackbar>
       <View style={styles.boxs}>
-        <View style={styles.itembox}>
-          <MaterialIcons name="home-repair-service" size={40} color="#0096fa" />
-          <Text style={styles.texts}>报修</Text>
-        </View>
-        <View style={styles.itembox}>
-          <AntDesign name="barschart" size={40} color="#0096fa" />
-          <Text style={styles.texts}>报表</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="database" size={40} color="#0096fa" />
-          <Text style={styles.texts}>入库</Text>
-        </View>
-        <View style={styles.itembox}>
-          <AntDesign name="calendar" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
+        <Text onPress={handleTip}>
+          <View style={styles.itembox}>
+            <Icon source="screwdriver" size={40} />
+            <Text style={styles.texts}>报修</Text>
+          </View>
+        </Text>
+        <Text onPress={handleTip}>
+          <View style={styles.itembox}>
+            <Icon source="chart-bar" size={40} />
+            <Text style={styles.texts}>报表</Text>
+          </View>
+        </Text>
+        <Text onPress={handleTip}>
+          <View style={styles.itembox}>
+            <Icon source="database-arrow-up" size={40} />
+            <Text style={styles.texts}>入库</Text>
+          </View>
+        </Text>
+        <Text onPress={handleTip}>
+          <View style={styles.itembox}>
+            <Icon source="clipboard-edit-outline" size={40} />
+            <Text style={styles.texts}>登记</Text>
+          </View>
+        </Text>
       </View>
     </View>
   )

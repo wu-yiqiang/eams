@@ -4,6 +4,7 @@ import { Link, Stack, router, Tabs } from "expo-router";
 import Items from '@/app/assets/items'
 import { GetAssetsPage } from '@/api/public'
 import { useEffect, useState } from 'react'
+import { Appbar } from 'react-native-paper'
 
 export default function Assets(props: any) {
   const [items, setItems] = useState<any>([])
@@ -25,37 +26,50 @@ export default function Assets(props: any) {
   }
 
   const getAssetsPage = async () => {
-     if (loading) return
+    if (loading) return
     setLoading(true)
-    const { data } = await GetAssetsPage(params).finally(() => {
+    const {data} = await GetAssetsPage(params).finally(() => {
       setLoading(false)
     })
-    console.log("sds", data)
-    return JSON.parse(data ?? [])
+    console.log('获取列表', data)
+    return JSON.stringify(data ? data : [])
+  }
+  const handleAdd = () => {
+    router.navigate({ pathname: '/assets/add' })
   }
   return (
     <View style={styles.Assets}>
-      <FlatList
-        ListEmptyComponent={() => <Empty description="暂无数据" />}
-        onRefresh={loadRefresh}
-        onEndReached={loadMore}
-        refreshing={loading}
-        onEndReachedThreshold={0.4}
-        data={items}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={Text}
-        renderItem={({ item, index, separators }) => (
-          <Pressable onPress={handleDetails}>
-            <Items key={item.id} target={item} />
-          </Pressable>
-        )}
-      ></FlatList>
+      <Appbar.Header mode="small" elevated>
+        <Appbar.Content title="资产" />
+        <Appbar.Action icon="image-filter-center-focus" onPress={() => {}} />
+        <Appbar.Action icon="plus-circle-outline" onPress={handleAdd} />
+      </Appbar.Header>
+      <View style={styles.AssetsContents}>
+        <FlatList
+          ListEmptyComponent={() => <Empty description="暂无数据" />}
+          onRefresh={loadRefresh}
+          onEndReached={loadMore}
+          refreshing={loading}
+          onEndReachedThreshold={0.4}
+          data={items}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={Text}
+          renderItem={({ item, index, separators }) => (
+            <Pressable onPress={handleDetails}>
+              <Items key={item.id} target={item} />
+            </Pressable>
+          )}
+        ></FlatList>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   Assets: {
+    flex: 1,
+  },
+  AssetsContents: {
     flex: 1,
     padding: 10,
   },

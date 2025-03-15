@@ -1,38 +1,53 @@
-import { View, Text, StyleSheet, ScrollView,Alert } from 'react-native'
-// import { CheckBox } from '@rneui/themed'
-import { Link, Stack } from 'expo-router'
-import * as Updates from 'expo-updates'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useState } from 'react'
-// import { getLocales } from 'expo-localization'
-// import i18n  from '@/local'
+import { Link, router } from 'expo-router'
+import { Appbar, RadioButton } from 'react-native-paper'
 export default function Language() {
-  // const [language, setLanguage] = useState(i18n.locale)
-  const handleLanguage = (value: string) => {
-    // setLanguage(value)
-    // i18n.locale = value
-    // Alert.alert('确认重启')
-    // Updates.reloadAsync()
-  }
+  const [checked, setChecked] = useState('first')
   return (
     <View style={styles.Language}>
-      <Stack.Screen
-        options={{
-          title: '语言设置'
-        }}
-      />
-      {/* <CheckBox checked={i18n.locale === 'en'} onPress={() => handleLanguage('en')} checkedIcon="dot-circle-o" uncheckedIcon="circle-o" title="English" />
-      <CheckBox checked={i18n.locale === 'zh'} onPress={() => handleLanguage('zh')} checkedIcon="dot-circle-o" uncheckedIcon="circle-o" title="简体中文" /> */}
+      <Appbar.Header mode="small" elevated>
+        <Appbar.BackAction
+          onPress={() => {
+            router.back()
+          }}
+        />
+        <Appbar.Content title="语言设置" />
+      </Appbar.Header>
+      <View style={styles.LanguageContents}>
+        <View style={styles.LanguageItem}>
+          <RadioButton value="first" status={checked === 'first' ? 'checked' : 'unchecked'} onPress={() => setChecked('first')} />
+          <Text style={styles.LanguageText}>中文</Text>
+        </View>
+        <View style={styles.LanguageItem}>
+          <RadioButton value="second" status={checked === 'second' ? 'checked' : 'unchecked'} onPress={() => setChecked('second')} />
+          <Text style={styles.LanguageText}>英语</Text>
+        </View>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   Language: {
-    // flex: 1,
-    // display: 'flex',
-    // justifyContent: 'flex-start',
-    // flexDirection: 'column',
+    flex: 1
+  },
+  LanguageContents: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
     padding: 20,
-    // overflow: 'scroll'
+    overflow: 'scroll',
+    backgroundColor: '#fff'
+  },
+  LanguageItem: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  LanguageText: {
+    fontSize: 14,
+    fontWeight: 500
   }
 })

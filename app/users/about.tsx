@@ -1,43 +1,49 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Logo from '@/assets/images/logo.png'
-import { Stack } from 'expo-router'
+import { Stack, router } from 'expo-router'
+import { Appbar } from 'react-native-paper'
 export default function About() {
   return (
     <View style={styles.About}>
-      <Stack.Screen
-        options={{
-          title: '关于我们'
-        }}
-      />
-      <View style={styles.logoinfo}>
-        <Image style={styles.logo} source={Logo} />
-        <View style={styles.appname}>
-          <Text style={styles.name}>EAMS APP</Text>
-        </View>
-      </View>
-      <View style={styles.infoitem}>
-        <View style={styles.item}>
-          <Text style={styles.title}>版本信息</Text>
-          <View style={styles.right}>
-            <Text style={styles.info}>v1.0.0</Text>
+      <Appbar.Header mode="small" elevated>
+        <Appbar.BackAction
+          onPress={() => {
+            router.back()
+          }}
+        />
+        <Appbar.Content title="关于我们" />
+      </Appbar.Header>
+      <View style={styles.AboutContent}>
+        <View style={styles.logoinfo}>
+          <Image style={styles.logo} source={Logo} />
+          <View style={styles.appname}>
+            <Text style={styles.name}>EAMS APP</Text>
           </View>
         </View>
-        <View style={styles.item}>
-          <Text style={styles.title}>官方邮箱</Text>
-          <View style={styles.right}>
-            <Text style={styles.info}>sutter.jhon@outlook.com</Text>
+        <View style={styles.infoitem}>
+          <View style={styles.item}>
+            <Text style={styles.title}>版本信息</Text>
+            <View style={styles.right}>
+              <Text style={styles.info}>v1.0.0</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.item}>
-          <Text style={styles.title}>服务热线</Text>
-          <View style={styles.right}>
-            <Text style={styles.info}>400-999-9988</Text>
+          <View style={styles.item}>
+            <Text style={styles.title}>官方邮箱</Text>
+            <View style={styles.right}>
+              <Text style={styles.info}>sutter.jhon@outlook.com</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.item}>
-          <Text style={styles.title}>官方网站</Text>
-          <View style={styles.right}>
-            <Text style={styles.info}>https://sutter9527.top</Text>
+          <View style={styles.item}>
+            <Text style={styles.title}>服务热线</Text>
+            <View style={styles.right}>
+              <Text style={styles.info}>400-999-9988</Text>
+            </View>
+          </View>
+          <View style={styles.item}>
+            <Text style={styles.title}>官方网站</Text>
+            <View style={styles.right}>
+              <Text style={styles.info}>https://sutter9527.top</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -47,13 +53,16 @@ export default function About() {
 
 const styles = StyleSheet.create({
   About: {
+    flex: 1
+  },
+  AboutContent: {
     flex: 1,
     display: 'flex',
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: 20,
     overflow: 'scroll',
-    rowGap: 50,
+    rowGap: 50
   },
   logoinfo: {
     display: 'flex',
@@ -88,7 +97,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e8e8e8',
     justifyContent: 'space-between',
-    alignContent: 'center'
+    alignContent: 'center',
+    borderRadius: 4
   },
   title: {
     fontSize: 14

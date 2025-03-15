@@ -14,6 +14,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, router, Tabs } from "expo-router";
 import avator from "@/assets/images/user.jpeg";
+import { Appbar, Icon, Snackbar } from 'react-native-paper'
 export default function Index() {
   const handleUserinfo = () => {
     router.navigate({ pathname: "/users/profile" });
@@ -54,22 +55,25 @@ export default function Index() {
       <View style={styles.contents}>
         <View style={styles.toolBox}>
           <View style={styles.tool}>
-            <MaterialIcons name="approval" size={22} color="#0096fa" />
+            <Icon source="stamper" size={30} />
             <Text style={styles.texts}>总数</Text>
             <Text style={styles.texts}>55</Text>
           </View>
           <View style={styles.tool}>
-            <FontAwesome name="calendar-check-o" size={22} color="#0096fa" />
+            <Icon source="repeat-variant" size={30} />
             <Text style={styles.texts}>在用</Text>
             <Text style={styles.texts}>55</Text>
           </View>
           <View style={styles.tool}>
-            <MaterialCommunityIcons name="alert-circle-check" size={22} color="#0096fa" />
+            <Icon
+              source="stop-circle-outline"
+              size={30}
+            />
             <Text style={styles.texts}>闲置</Text>
             <Text style={styles.texts}>55</Text>
           </View>
           <View style={styles.tool}>
-            <Feather name="check-square" size={22} color="#0096fa" />
+            <Icon source="alert-rhombus-outline" size={30} />
             <Text style={styles.texts}>报废</Text>
             <Text style={styles.texts}>55</Text>
           </View>
