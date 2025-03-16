@@ -1,10 +1,21 @@
 import { View, Text, StyleSheet,ScrollView } from 'react-native'
 import { Link, router } from 'expo-router'
 import { Appbar } from 'react-native-paper'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 export default function Privacy() {
+  const { bottom } = useSafeAreaInsets()
   return (
     <View style={styles.Privacy}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.BackAction
           onPress={() => {
             router.back()

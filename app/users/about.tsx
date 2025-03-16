@@ -2,10 +2,21 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Logo from '@/assets/images/logo.png'
 import { Stack, router } from 'expo-router'
 import { Appbar } from 'react-native-paper'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 export default function About() {
+  const { bottom } = useSafeAreaInsets()
   return (
     <View style={styles.About}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.BackAction
           onPress={() => {
             router.back()

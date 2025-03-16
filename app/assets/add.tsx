@@ -1,10 +1,22 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Link, Stack, router } from 'expo-router'
 import { Appbar } from "react-native-paper";
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 export default function AssetsAdd() {
+  const { bottom } = useSafeAreaInsets()
   return (
     <View style={styles.AssetsAdd}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.BackAction
           onPress={() => {
             router.back()

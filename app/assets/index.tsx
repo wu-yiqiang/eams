@@ -5,8 +5,10 @@ import Items from '@/app/assets/items'
 import { GetAssetsPage } from '@/api/public'
 import { useEffect, useState } from 'react'
 import { Appbar } from 'react-native-paper'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function Assets(props: any) {
+    const { bottom } = useSafeAreaInsets()
   const [items, setItems] = useState<any>([])
   const [params, setParams] = useState({ pageSize: 30, pageNo: 1 })
   let [loading, setLoading] = useState(false)
@@ -39,7 +41,16 @@ export default function Assets(props: any) {
   }
   return (
     <View style={styles.Assets}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40,
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.Content title="资产" />
         <Appbar.Action icon="image-filter-center-focus" onPress={() => {}} />
         <Appbar.Action icon="plus-circle-outline" onPress={handleAdd} />

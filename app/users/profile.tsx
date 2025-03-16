@@ -4,11 +4,23 @@ import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons'
 import Octicons from '@expo/vector-icons/Octicons'
 import { router, Stack } from 'expo-router'
 import { Appbar } from 'react-native-paper'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 export default function Profile() {
+  const { bottom } = useSafeAreaInsets()
   const handleEditInfo = () => {}
   return (
     <View style={styles.Profile}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.BackAction
           onPress={() => {
             router.back()

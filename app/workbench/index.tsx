@@ -2,7 +2,10 @@ import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-n
 import { Link, router, Tabs } from 'expo-router'
 import { Appbar, Icon,Snackbar } from 'react-native-paper'
 import { useState } from 'react'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 export default function Workbench() {
+    const { bottom } = useSafeAreaInsets()
+  
   const [visible, setVisible] = useState(false)
   const handleUserinfo = () => {
     router.navigate({ pathname: '/users/profile' })
@@ -16,12 +19,19 @@ export default function Workbench() {
 
   return (
     <View style={styles.Workbench}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.Content title="工作台" />
       </Appbar.Header>
-      <Snackbar visible={visible} onDismiss={closeTips} duration={2000}>
-        该功能正在加紧开发中，请耐心等待。。。
-      </Snackbar>
+
       <View style={styles.boxs}>
         <Text onPress={handleTip}>
           <View style={styles.itembox}>
@@ -48,6 +58,9 @@ export default function Workbench() {
           </View>
         </Text>
       </View>
+      <Snackbar visible={visible} onDismiss={closeTips} duration={2000} style={styles.snackbar}>
+        该功能正在加紧开发中，请耐心等待。。。
+      </Snackbar>
     </View>
   )
 }

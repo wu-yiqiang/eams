@@ -5,8 +5,10 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Link, Stack, router, Tabs } from 'expo-router'
 import { Appbar, Button } from 'react-native-paper'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function Setting() {
+  const { bottom } = useSafeAreaInsets()
   const handleResetPassword = () => {}
   const handleTheme = () => {
     router.navigate({ pathname: '/users/theme' })
@@ -20,7 +22,16 @@ export default function Setting() {
   }
   return (
     <View style={styles.Setting}>
-      <Appbar.Header mode="small" elevated>
+      <Appbar.Header
+        mode="small"
+        elevated
+        style={[
+          {
+            height: 40
+          }
+        ]}
+        safeAreaInsets={{ bottom }}
+      >
         <Appbar.BackAction
           onPress={() => {
             router.back()
