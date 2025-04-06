@@ -22,14 +22,14 @@ export default function AssetsAdd() {
             router.back()
           }}
         />
-        <Appbar.Content title="资产新增" />
+        <Appbar.Content title="维修新增" />
       </Appbar.Header>
       <Stack.Screen
         options={{
           headerShown: false
         }}
       />
-      <Text>资产新增页面</Text>
+      <Text>维修新增页面</Text>
     </View>
   )
 }

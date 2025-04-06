@@ -4,36 +4,22 @@ import CheckStatus from '@/components/CheckStatus'
 import avator from "@/assets/images/user.jpeg";
 import { useState } from "react";
 export default function AssetsItem(props: any) {
-  const {
-    title,
-    categopry,
-    department,
-    number,
-    status,
-    assetsStatus,
-    belong,
-    updator,
-    update,
-  } = props?.target;
-
-
+  const taeget = props?.target
   return (
     <View style={styles.AssetsItem}>
-      <View style={styles.currentStatus}>
-        <CheckStatus status={status} />
-      </View>
+      <View style={styles.currentStatus}>{/* <CheckStatus status={status} /> */}</View>
       <View style={styles.status}>
         <View style={styles.assetsStatus}>
-          <Text style={styles.title}>资产编号：</Text>
-          <Text style={styles.value}>{number}</Text>
+          <Text style={styles.title}>设备编号：</Text>
+          {/* <Text style={styles.value}>{number}</Text> */}
         </View>
         {/* <View style={styles.assetsStatus}>
           <Text style={styles.title}>盘点状态：</Text>
           <Text style={styles.value}>{status}</Text>
         </View> */}
         <View style={styles.assetsStatus}>
-          <Text style={styles.title}>资产状态：</Text>
-          <Status status={assetsStatus} />
+          <Text style={styles.title}>设备状态：</Text>
+          {/* <Status status={assetsStatus} /> */}
         </View>
       </View>
       <View style={styles.infos}>
@@ -41,39 +27,39 @@ export default function AssetsItem(props: any) {
         <View style={styles.info}>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>资产类别：</Text>
+              <Text style={styles.title}>设备名称：</Text>
             </View>
-            <Text style={styles.value}>{categopry}</Text>
+            <Text style={styles.value}>{taeget?.device_name}</Text>
           </View>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
               <Text style={styles.title}>所属部门：</Text>
             </View>
-            <Text style={styles.value}>{department}</Text>
+            {/* <Text style={styles.value}>{department}</Text> */}
           </View>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>资产型号：</Text>
+              <Text style={styles.title}>维修型号：</Text>
             </View>
-            <Text style={styles.valuebox}>{title}</Text>
+            {/* <Text style={styles.valuebox}>{title}</Text> */}
           </View>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>更新日期：</Text>
+              <Text style={styles.title}>维修主题：</Text>
             </View>
-            <Text style={styles.value}>{update}</Text>
+            <Text style={styles.value}>{taeget?.subject}</Text>
           </View>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>持有人员：</Text>
+              <Text style={styles.title}>申请人员：</Text>
             </View>
-            <Text style={styles.value}>{belong}</Text>
+            <Text style={styles.value}>{taeget?.applyer}</Text>
           </View>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>使用人员：</Text>
+              <Text style={styles.title}>维修人员：</Text>
             </View>
-            <Text style={styles.value}>{updator}</Text>
+            <Text style={styles.value}>{taeget?.maintainer}</Text>
           </View>
         </View>
       </View>

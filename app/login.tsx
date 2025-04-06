@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { Button,Snackbar } from 'react-native-paper'
 
 export default function Login() {
-  const [formState, setFormState] = useState({ username: 'python222', password: '123456' })
+  const [formState, setFormState] = useState({ email: 'sutter.wu@outlook.com', password: '1234@Abcd' })
   const [visible, setVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const handleLogin = async () => {
@@ -18,6 +18,7 @@ export default function Login() {
     const token = data?.token ?? ''
     if (token) {
       await AsyncStorage.setItem('msAppToken', token)
+      await AsyncStorage.setItem('EAMSUserData', data)
       setVisible(true)
       router.navigate({ pathname: '/' })
     }
@@ -42,8 +43,8 @@ export default function Login() {
 
       <View style={styles.mainBox}>
         <View style={styles.contents}>
-          <TextInput style={styles.input} placeholder="邮箱" value={formState.username} onChangeText={(value) => setFormState({ username: value, password: formState.password })} />
-          <TextInput style={styles.input} inlineImageLeft="search_icon" value={formState.password} placeholder="密码" secureTextEntry={true} onChangeText={(value) => setFormState({ username: formState.username, password: value })} />
+          <TextInput style={styles.input} placeholder="邮箱" value={formState.email} onChangeText={(value) => setFormState({ email: value, password: formState.password })} />
+          <TextInput style={styles.input} inlineImageLeft="search_icon" value={formState.password} placeholder="密码" secureTextEntry={true} onChangeText={(value) => setFormState({ email: formState.email, password: value })} />
         </View>
         <View style={styles.toolBox}>
           {/* <Button title="注册" onPress={handleRegister} />

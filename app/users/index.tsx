@@ -14,8 +14,11 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, router, Tabs } from "expo-router";
 import avator from "@/assets/images/user.jpeg";
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Appbar, Icon, Snackbar } from 'react-native-paper'
 export default function Index() {
+  const userInfoStr = AsyncStorage.getItem('EAMSUserData') ?? ''
+  // const userInfo = JSON.parse(userInfoStr)
   const handleUserinfo = () => {
     router.navigate({ pathname: "/users/profile" });
   };
@@ -38,7 +41,7 @@ export default function Index() {
           <Image style={styles.avator} source={avator} />
           <View style={styles.infos}>
             <View>
-              <Text style={styles.name}>金太阳</Text>
+              <Text style={styles.name}>金太阳 {userInfoStr}</Text>
             </View>
             <View>
               <Text style={styles.sign}>该用户什么信息也没有留下</Text>
@@ -65,10 +68,7 @@ export default function Index() {
             <Text style={styles.texts}>55</Text>
           </View>
           <View style={styles.tool}>
-            <Icon
-              source="stop-circle-outline"
-              size={30}
-            />
+            <Icon source="stop-circle-outline" size={30} />
             <Text style={styles.texts}>闲置</Text>
             <Text style={styles.texts}>55</Text>
           </View>

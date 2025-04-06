@@ -2,13 +2,13 @@ import { View, Text, StyleSheet, ScrollView, Button, FlatList, TouchableWithoutF
 import Empty from '@/components/Empty'
 import { Link, Stack, router, Tabs } from "expo-router";
 import Items from '@/app/assets/items'
-import { GetAssetsPage } from '@/api/public'
+import { GetMaintainPage } from '@/api/public'
 import { useEffect, useState } from 'react'
 import { Appbar } from 'react-native-paper'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function Assets(props: any) {
-    const { bottom } = useSafeAreaInsets()
+  const { bottom } = useSafeAreaInsets()
   const [items, setItems] = useState<any>([])
   const [params, setParams] = useState({ pageSize: 30, pageNo: 1 })
   let [loading, setLoading] = useState(false)
@@ -23,6 +23,7 @@ export default function Assets(props: any) {
   const loadRefresh = async () => {
     setParams({ pageSize: params.pageSize, pageNo: 1 })
     const data = await getAssetsPage()
+    console.log("sdsd", typeof data)
     setItems(data)
     console.log('滚动顶部了')
   }
@@ -30,11 +31,10 @@ export default function Assets(props: any) {
   const getAssetsPage = async () => {
     if (loading) return
     setLoading(true)
-    const {data} = await GetAssetsPage(params).finally(() => {
+    const { data } = await GetMaintainPage(params).finally(() => {
       setLoading(false)
     })
-    console.log('获取列表', data)
-    return JSON.stringify(data ? data : [])
+    return data?.lists?.length ? data?.lists : []
   }
   const handleAdd = () => {
     router.navigate({ pathname: '/assets/add' })
@@ -46,12 +46,12 @@ export default function Assets(props: any) {
         elevated
         style={[
           {
-            height: 40,
+            height: 40
           }
         ]}
         safeAreaInsets={{ bottom }}
       >
-        <Appbar.Content title="资产" />
+        <Appbar.Content title="维修" />
         <Appbar.Action icon="image-filter-center-focus" onPress={() => {}} />
         <Appbar.Action icon="plus-circle-outline" onPress={handleAdd} />
       </Appbar.Header>
@@ -66,8 +66,8 @@ export default function Assets(props: any) {
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={Text}
           renderItem={({ item, index, separators }) => (
-            <Pressable onPress={handleDetails}>
-              <Items key={item.id} target={item} />
+            <Pressable onPress={() => handleDetails}>
+              <Items key={item.id} target={ item } />
             </Pressable>
           )}
         ></FlatList>

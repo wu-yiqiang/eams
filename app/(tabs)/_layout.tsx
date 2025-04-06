@@ -65,7 +65,7 @@ export default function TabLayout() {
   // )
   const [index, setIndex] = useState(0)
   const [routes] = useState([
-    { key: 'assets', title: '资产', focusedIcon: 'clipboard-list', unfocusedIcon: 'clipboard-list-outline' },
+    { key: 'assets', title: '维修', focusedIcon: 'clipboard-list', unfocusedIcon: 'clipboard-list-outline' },
     { key: 'workbench', title: '工作台', focusedIcon: 'sitemap', unfocusedIcon: 'sitemap-outline' },
     { key: 'user', title: '用户', focusedIcon: 'account', unfocusedIcon: 'account-outline' }
   ])

@@ -10,12 +10,10 @@ export const PostLogin = (data: any) => {
   })
 }
 
-export const GetAssetsPage = (params: any) => {
+export const GetMaintainPage = (params: any) => {
   return request({
-    url: '/user/assets/page',
-    method: 'GET',
-    params: params,
-    data: null,
-    headers: null
+    url: '/maintain/page',
+    method: 'POST',
+    data: params,
   })
 }

@@ -22,7 +22,7 @@ export default function AssetsDetails() {
     <View style={styles.Details}>
       <Stack.Screen
         options={{
-          title: '资产详情'
+          title: '维修详情'
         }}
       />
       <View style={styles.currentStatus}>
@@ -30,7 +30,7 @@ export default function AssetsDetails() {
       </View>
       <View style={styles.status}>
         <View style={styles.assetsStatus}>
-          <Text style={styles.title}>资产编号：</Text>
+          <Text style={styles.title}>维修编号：</Text>
           <Text style={styles.value}>number</Text>
         </View>
         {/* <View style={styles.assetsStatus}>
@@ -38,7 +38,7 @@ export default function AssetsDetails() {
                 <Text style={styles.value}>{status}</Text>
               </View> */}
         <View style={styles.assetsStatus}>
-          <Text style={styles.title}>资产状态：</Text>
+          <Text style={styles.title}>维修状态：</Text>
           <Status status={1} />
         </View>
       </View>
@@ -47,7 +47,7 @@ export default function AssetsDetails() {
         <View style={styles.info}>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>资产类别：</Text>
+              <Text style={styles.title}>维修类别：</Text>
             </View>
             <Text style={styles.value}>categopry</Text>
           </View>
@@ -59,7 +59,7 @@ export default function AssetsDetails() {
           </View>
           <View style={styles.infobox}>
             <View style={styles.titlebox}>
-              <Text style={styles.title}>资产型号：</Text>
+              <Text style={styles.title}>维修型号：</Text>
             </View>
             <Text style={styles.valuebox}>title</Text>
           </View>
