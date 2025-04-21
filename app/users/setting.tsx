@@ -17,7 +17,7 @@ export default function Setting() {
     router.navigate({ pathname: '/users/language' })
   }
   const handleLoginOut = async () => {
-    await AsyncStorage.removeItem('msAppToken')
+    await AsyncStorage.removeItem('EAMSUserData')
     router.navigate({ pathname: '/login' })
   }
   return (

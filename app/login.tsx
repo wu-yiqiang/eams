@@ -17,8 +17,7 @@ export default function Login() {
     })
     const token = data?.token ?? ''
     if (token) {
-      await AsyncStorage.setItem('msAppToken', token)
-      await AsyncStorage.setItem('EAMSUserData', data)
+      await AsyncStorage.setItem('EAMSUserData', JSON.stringify(data))
       setVisible(true)
       router.navigate({ pathname: '/' })
     }

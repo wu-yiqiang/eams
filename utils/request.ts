@@ -8,7 +8,8 @@ export const request = async (req: Request) => {
   // const baseURL = 'https://sutter9527.top/eams'
   let { url, method = 'GET', params = null, data = null, headers = {} } = req
   let uri = baseURL + url
-  const token = await AsyncStorage.getItem('msAppToken')
+  const userdata = await AsyncStorage.getItem('EAMSUserData')
+  const token = JSON.parse(userdata)?.token
   const options = {
     method,
     ...{ body: data ? JSON.stringify(data) : null },
@@ -26,6 +27,7 @@ export const request = async (req: Request) => {
     .then(async (response) => {
       if (!response.ok) {
         const status = response?.status
+        console.log("status", status)
         if (status == 401) router.navigate({ pathname: '/login' })
         return Promise.reject()
       }
